@@ -25,15 +25,7 @@ public class LoginVo implements  UserDetails {
         return  authorities;
     }
 
-    @Override
-    public String getPassword() {
-        return pwd;
-    }
 
-    @Override
-    public String getUsername() {
-        return name;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -56,11 +48,19 @@ public class LoginVo implements  UserDetails {
     }
 
     int id;
-    String name;
-    String pwd;
+    String username;
+    String password;
     int type;
      List<Role> roles;
+     int userrightsid;
 
+    public int getUserrightsid() {
+        return userrightsid;
+    }
+
+    public void setUserrightsid(int userrightsid) {
+        this.userrightsid = userrightsid;
+    }
 
     public List<Role> getRoles() {
         return roles;
@@ -78,13 +78,7 @@ public class LoginVo implements  UserDetails {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getType() {
         return type;
@@ -94,11 +88,21 @@ public class LoginVo implements  UserDetails {
         this.type = type;
     }
 
-    public String getPwd() {
-        return pwd;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

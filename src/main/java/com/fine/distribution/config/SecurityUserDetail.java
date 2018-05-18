@@ -43,10 +43,10 @@ public class SecurityUserDetail  implements UserDetailsService {
 
         LoginVo loginVo=new LoginVo();
         loginVo.setId(u.getUserid());
-        loginVo.setName(u.getName());
-        loginVo.setPwd(u.getPassword());
+        loginVo.setUsername(u.getName());
+        loginVo.setPassword(u.getPassword());
         loginVo.setRoles(roles);
-
+        loginVo.setUserrightsid(u.getRightsid());
         return loginVo;
     }
 

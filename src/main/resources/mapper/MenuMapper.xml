@@ -44,7 +44,12 @@
       <result column="enabled1" property="enabled" jdbcType="BIT" />
     </collection>
   </resultMap>
-  <select id="selectallmenubyuserid"  resultMap="menuallbyuser">
-SELECT  m1.id as m1id ,m2.id  as m2id ,m1.`name` ,m2.`name` as name2 ,m1.path,m2.path as path2 ,m1.iconCls ,m2.iconCls as iconCls2 ,m1.url,m2.url as url2  from  menu m1  INNER JOIN  menu m2 on m1.id=m2.parentId where m1.id != 1
+  <select id="selectallmenubyuserid"  resultMap="menuallbyuser" parameterType="int">
+SELECT  m1.id as m1id ,m2.id  as m2id ,m1.`name` ,m2.`name` as name2 ,m1.path,m2.path as path2 ,m1.iconCls ,m2.iconCls as iconCls2 ,m1.url,m2.url as url2  from  menu m1  INNER JOIN  menu m2 on m1.id=m2.parentId where m1.id != 1  and m2.id in
+(SELECT mr.mid
+FROM  userrights_role ur ,userrights us,menu_role mr where  mr.rid=ur.rid and ur.userid=#{userid}
+)
+
+
   </select>
 </mapper>

@@ -4,14 +4,14 @@
  Source Server         : 正式服
  Source Server Type    : MySQL
  Source Server Version : 50718
- Source Host           : 
+ Source Host           :
  Source Schema         : crm
 
  Target Server Type    : MySQL
  Target Server Version : 50718
  File Encoding         : 65001
 
- Date: 18/05/2018 11:09:14
+ Date: 18/05/2018 19:17:23
 */
 
 SET NAMES utf8mb4;
@@ -78,7 +78,7 @@ INSERT INTO `menu` VALUES (1, '/', NULL, NULL, '所有', NULL, NULL, NULL, NULL,
 INSERT INTO `menu` VALUES (2, '/', '/home', 'Home', '代理商管理', 'fa fa-user-circle-o', NULL, 1, 1, 1);
 INSERT INTO `menu` VALUES (3, '/', '/home', 'Home', '分润管理', 'fa fa-address-card-o', NULL, 1, 1, 1);
 INSERT INTO `menu` VALUES (4, '/', '/home', 'Home', '用户管理', 'fa fa-money', NULL, 1, 1, 1);
-INSERT INTO `menu` VALUES (5, '/', '/home', 'Home', '订单管理', 'fa fa-bar-chart', NULL, 1, 1, 1);
+INSERT INTO `menu` VALUES (5, '/', '/home', 'Home', '财务管理', 'fa fa-bar-chart', NULL, 1, 1, 1);
 INSERT INTO `menu` VALUES (6, '/', '/home', 'Home', '系统管理', 'fa fa-windows', NULL, 1, 1, 1);
 INSERT INTO `menu` VALUES (7, '/employee/basic/**', '/emp/basic', 'EmpBasic', '我的区域用户', NULL, NULL, 1, 2, 1);
 INSERT INTO `menu` VALUES (10, '/personnel/ec/**', '/per/ec', 'PerEc', '区域快捷收款分润', NULL, NULL, 1, 3, 1);
@@ -86,7 +86,7 @@ INSERT INTO `menu` VALUES (11, '/personnel/train/**', '/per/train', 'PerTrain', 
 INSERT INTO `menu` VALUES (18, '/salary/search/**', '/sal/search', 'SalSearch', '所有用户', NULL, NULL, 1, 4, 1);
 INSERT INTO `menu` VALUES (19, '/statistics/all/**', '/sta/all', 'StaAll', '快捷收银流水', NULL, NULL, 1, 5, 1);
 INSERT INTO `menu` VALUES (20, '/statistics/score/**', '/sta/score', 'StaScore', '智能还款流水', NULL, NULL, 1, 5, 1);
-INSERT INTO `menu` VALUES (23, '/system/basic/**', '/sys/basic', 'SysBasic', '基础信息设置', NULL, NULL, 1, 6, 1);
+INSERT INTO `menu` VALUES (23, '/system/basic/**', '/sys/basic', 'SysBasic', '省市代理商区域分润余额', NULL, NULL, 1, 5, 1);
 INSERT INTO `menu` VALUES (24, '/system/cfg/**', '/sys/cfg', 'SysCfg', '系统管理', NULL, NULL, 1, 6, 1);
 INSERT INTO `menu` VALUES (25, '/system/log/**', '/sys/log', 'SysLog', '操作日志管理', NULL, NULL, 1, 6, 0);
 INSERT INTO `menu` VALUES (26, '/system/hr/**', '/sys/hr', 'SysHr', '操作员管理', NULL, NULL, 1, 6, 1);
@@ -107,7 +107,7 @@ CREATE TABLE `menu_role` (
   KEY `rid` (`rid`),
   CONSTRAINT `menu_role_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `menu` (`id`),
   CONSTRAINT `menu_role_ibfk_2` FOREIGN KEY (`rid`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu_role
@@ -115,6 +115,11 @@ CREATE TABLE `menu_role` (
 BEGIN;
 INSERT INTO `menu_role` VALUES (1, 3, 2);
 INSERT INTO `menu_role` VALUES (2, 10, 2);
+INSERT INTO `menu_role` VALUES (3, 11, 2);
+INSERT INTO `menu_role` VALUES (4, 4, 2);
+INSERT INTO `menu_role` VALUES (5, 7, 2);
+INSERT INTO `menu_role` VALUES (6, 5, 1);
+INSERT INTO `menu_role` VALUES (7, 23, 1);
 COMMIT;
 
 -- ----------------------------

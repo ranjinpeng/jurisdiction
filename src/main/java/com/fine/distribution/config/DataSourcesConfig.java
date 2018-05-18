@@ -26,7 +26,7 @@ public class DataSourcesConfig {
     @Bean(name = "dataSource",destroyMethod = "close")
     public DruidDataSource Construction() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/crm?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false");
+        dataSource.setUrl("jdbc:mysql://loaclhost:3306/crm?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("123");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -71,7 +71,7 @@ public class DataSourcesConfig {
         reg.addUrlMappings("/druid/*");
         //reg.addInitParameter("allow", "127.0.0.1");
         //reg.addInitParameter("deny","");
-        reg.addInitParameter("loginUsername", "fine");
+        reg.addInitParameter("loginUsername", "61");
         reg.addInitParameter("loginPassword", "666");
         return reg;
     }

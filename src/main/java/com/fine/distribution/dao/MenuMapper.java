@@ -11,5 +11,5 @@ public interface MenuMapper extends MyMapper<Menu> {
     @Select("SELECT * FROM menu WHERE parentId=#{id}")
     List<Menu> selectbyparentid(@Param("id") Integer id);
 
-    List<Menu> selectallmenubyuserid();
+    List<Menu> selectallmenubyuserid(@Param("userid") int userid);
 }

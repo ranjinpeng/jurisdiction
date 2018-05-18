@@ -28,15 +28,15 @@ public class CommonContor {
     @ApiOperation("获取登陆者信息")
     @PostMapping("/getloginvo")
     public JsonBackEntityT<LoginVo> insertmeeting(){
-        return BackJson.successObj(UserUtils.getCurrentHr());
+        return BackJson.successObj(UserUtils.getCurrent());
     }
 
     @ApiOperation("获取登陆者信息")
     @PostMapping("/getmenu")
     public JsonBackEntityT<List<Menu>> menus(){
-             UserUtils.getCurrentHr().getAuthorities();
 
-        return  BackJson.successObj(menuMapper.selectallmenubyuserid());
+
+        return  BackJson.successObj(menuMapper.selectallmenubyuserid(UserUtils.getCurrent().getUserrightsid()));
     }
 
 }
