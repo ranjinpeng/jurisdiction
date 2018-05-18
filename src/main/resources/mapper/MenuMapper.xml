@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fine.distribution.dao.MenuMapper" >
+  <resultMap id="BaseResultMap" type="com.fine.distribution.entity.Menu" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="component" property="component" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
+    <result column="keepAlive" property="keepalive" jdbcType="BIT" />
+    <result column="requireAuth" property="requireauth" jdbcType="BIT" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="enabled" property="enabled" jdbcType="BIT" />
+  </resultMap>
+
+  <resultMap id="menuallbyuser" type="com.fine.distribution.entity.Menu" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="m1id" property="id" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="component" property="component" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
+    <result column="keepAlive" property="keepalive" jdbcType="BIT" />
+    <result column="requireAuth" property="requireauth" jdbcType="BIT" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="enabled" property="enabled" jdbcType="BIT" />
+    <collection property="childslist" ofType="com.fine.distribution.entity.Menu">
+      <id column="m2id" property="id" jdbcType="INTEGER" />
+      <result column="url2" property="url" jdbcType="VARCHAR" />
+      <result column="path2" property="path" jdbcType="VARCHAR" />
+      <result column="component1" property="component" jdbcType="VARCHAR" />
+      <result column="name2" property="name" jdbcType="VARCHAR" />
+      <result column="iconCls2" property="iconcls" jdbcType="VARCHAR" />
+      <result column="keepAlive1" property="keepalive" jdbcType="BIT" />
+      <result column="requireAuth1" property="requireauth" jdbcType="BIT" />
+      <result column="parentId1" property="parentid" jdbcType="INTEGER" />
+      <result column="enabled1" property="enabled" jdbcType="BIT" />
+    </collection>
+  </resultMap>
+  <select id="selectallmenubyuserid"  resultMap="menuallbyuser">
+SELECT  m1.id as m1id ,m2.id  as m2id ,m1.`name` ,m2.`name` as name2 ,m1.path,m2.path as path2 ,m1.iconCls ,m2.iconCls as iconCls2 ,m1.url,m2.url as url2  from  menu m1  INNER JOIN  menu m2 on m1.id=m2.parentId where m1.id != 1
+  </select>
+</mapper>
